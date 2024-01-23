@@ -17,7 +17,5 @@ class ProductPage(BasePage):
 
     def test_checking_the_cost_of_goods(self):
         price_message = self.browser.find_element(*AddItemCardLocators.price_message).text
-        print(price_message)
         price_basket = self.browser.find_element(*AddItemCardLocators.price_basket).text
-        print(price_basket)
         assert price_message == price_basket, 'the price of the book is different'
