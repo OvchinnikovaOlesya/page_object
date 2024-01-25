@@ -1,6 +1,6 @@
 import time
 from selenium.webdriver.support import expected_conditions as EC
-from .locators import BasePageLocators
+from .locators import BasePageLocators, AddItemCardLocators
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoAlertPresentException
@@ -13,15 +13,19 @@ class BasePage:
         self.url = url
         #self.browser.implicitly_wait(10)
 
+    def go_to_cart(self):
+        go_to_basket = self.browser.find_element(*AddItemCardLocators.go_to_basket)
+        go_to_basket.click()
+
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+        link.click()
+
     def open(self):
         self.browser.get(self.url)
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is presented"
-
-    def go_to_login_page(self):
-        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
-        link.click()
 
     def is_element_present(self, how: object, what: object) -> object:
         try:

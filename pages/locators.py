@@ -18,4 +18,6 @@ class AddItemCardLocators:
     price_message = (By.CSS_SELECTOR, '.col-sm-6 .price_color')
     price_basket = (By.CSS_SELECTOR, '.alert.alert-info strong')
     not_element_message = (By.CSS_SELECTOR, '#messages > :nth-child(1)')
+    empty_basket = (By.CSS_SELECTOR, '#content_inner :nth-child(1)')
+    go_to_basket = (By.CSS_SELECTOR, '.btn-group a')
 

@@ -1,7 +1,5 @@
 from .base_page import BasePage
-from selenium.webdriver.common.by import By
 from .locators import AddItemCardLocators
-import time
 
 
 class ProductPage(BasePage):
@@ -20,7 +18,7 @@ class ProductPage(BasePage):
         price_basket = self.browser.find_element(*AddItemCardLocators.price_basket).text
         assert price_message == price_basket, 'the price of the book is different'
 
-    def test_should_not_be_success_message(self):
+    def should_not_be_success_message(self):
         assert self.is_not_element_present(*AddItemCardLocators.not_element_message), 'Success message is presented, but should not be'
 
     def test_is_dissapeared(self):
