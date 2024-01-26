@@ -1,5 +1,6 @@
 import pytest
-from basket_page import BasketPage
+from .pages.basket_page import BasketPage
+from .pages.login_page import LoginPage
 from .pages.product_page import ProductPage
 from .pages.main_page import MainPage
 
@@ -24,7 +25,8 @@ def test_login_and_registration_form(browser):
     new_link = 'http://selenium1py.pythonanywhere.com/ru/accounts/login/'
     page = MainPage(browser, new_link)
     page.open()
-    login_page = page.go_to_login_page()
+    page.go_to_login_page()
+    login_page = LoginPage(browser, browser.current_url)
     login_page.should_be_login_page()
 
 
